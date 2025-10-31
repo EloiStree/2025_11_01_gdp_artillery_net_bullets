@@ -1,6 +1,8 @@
-# 2025_11_01 — gdp_artillery_net_bullets 
+Artillery Net Bullets 
 
 Multiplayer artillery game using curved projectile start/end coordinates.
+
+A cross over between https://nuclearsecrecy.com/nukemap and [Artillery](https://www.youtube.com/watch?v=H3gqZ5iC4yI) 
 
 * Reference clips: 
 - [https://www.youtube.com/shorts/JCHAEbfwqAU?t=8&feature=share](https://www.youtube.com/shorts/JCHAEbfwqAU?t=8&feature=share)
