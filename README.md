@@ -17,3 +17,6 @@ Gameplay ideas:
   * Any attack that harms civilians temporarily exposes the attacker’s position to others.
 * The mechanic encourages tactical play: operating inside civilian areas increases the risk of being tracked.
 
+  The topic of the hackathon is use the satellite date and not make a game.
+  So I am going to make a mini game then learn on the hackathon how to design the log based on sponsor data.
+
