@@ -20,3 +20,9 @@ Gameplay ideas:
   The topic of the hackathon is use the satellite date and not make a game.
   So I am going to make a mini game then learn on the hackathon how to design the log based on sponsor data.
 
+
+Nice team to work with:
+https://taikai.network/cassinihackathons/hackathons/eu-space-consumer-experience/projects/cmh890hy102pcgs2wj7v9q90k/idea
+
+My team in the hackathon 
+https://taikai.network/cassinihackathons/hackathons/eu-space-consumer-experience/projects/cmgxk3zm201z01nb99pl1gzcc/idea
