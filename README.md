@@ -18,10 +18,10 @@ Gameplay ideas:
   * Firing from or into civilian zones has penalties: your exact position is revealed to opponents (or revealed for 10 seconds if civilians are hit).
   * Any attack that harms civilians temporarily exposes the attacker’s position to others.
 * The mechanic encourages tactical play: operating inside civilian areas increases the risk of being tracked.
-
-  The topic of the hackathon is use the satellite date and not make a game.
-  So I am going to make a mini game then learn on the hackathon how to design the log based on sponsor data.
-
+  
+The topic of the hackathon is use the satellite date and not make a game.  
+So I am going to make a mini game then learn on the hackathon how to design the log based on sponsor data.  
+  
 
 Nice team to work with:
 https://taikai.network/cassinihackathons/hackathons/eu-space-consumer-experience/projects/cmh890hy102pcgs2wj7v9q90k/idea
