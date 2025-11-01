@@ -73,6 +73,7 @@ static func m109_paladin_bullet(
 	
 	Returns: Position of shell
 	"""
+	
 	if charge < 3 or charge > 8:
 		push_error("M109 Charge must be 3 to 8")
 		return Vector3.ZERO
