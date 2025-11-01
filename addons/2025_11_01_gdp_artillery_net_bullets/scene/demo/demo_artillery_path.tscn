@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcoa400fwy8ny"]
+
+[ext_resource type="Script" uid="uid://qo2k88opd5xx" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/debug_bullet_position.gd.gd" id="2_bmmgp"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_d454v"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="NodePath" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NodePath"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="NodePath"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="NodePath"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="NodePath"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="NodePath"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="NodePath"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="NodePath"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+
+[node name="NodeBullet" type="Node3D" parent="." node_paths=PackedStringArray("bullet_debug_node", "muzzle_debug_node")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00340962, 0.00321364, 0.00547457)
+script = ExtResource("2_bmmgp")
+simulation_time = 15.68
+charge = 3
+elevation_deg = 5.0
+horizontal_rotation_deg = 50.0
+muzzle_height = 2.36
+bullet_debug_node = NodePath("Node3DBullets")
+muzzle_debug_node = NodePath("Node3DMuzzle")
+debug_time = 60.0
+
+[node name="Node3DBullets" type="Node3D" parent="NodeBullet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36545, 0.661877, -0.459322)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NodeBullet/Node3DBullets"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+skeleton = NodePath("../..")
+
+[node name="Node3DMuzzle" type="Node3D" parent="NodeBullet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03918, -1.16227)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NodeBullet/Node3DMuzzle"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.948959, 0.315401, 0, -0.315401, 0.948959, 0, 2.50954, 4.39561)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.724701, 0.689063, 0, -0.689063, 0.724701, 0, 1.00641, 0.416973)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
