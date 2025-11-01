@@ -29,7 +29,7 @@ https://www.youtube.com/results?search_query=M109+Paladins
 https://www.bits.de/NRANEU/others/amd-us-archive/FM6-40%2860%29.pdf
 Min range 100-900 meters
 Max range ammunition non assisted 24KM
-
+https://nigelef.tripod.com/fc_ballistics.htm
 
 
 Planetery Cannon:
