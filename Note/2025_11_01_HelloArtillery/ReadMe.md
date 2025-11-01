@@ -24,3 +24,13 @@ https://david.bookstaber.com/Interests/2024/03/improved-ballistic-calculator/
 
 
 [M777 Howitzers & M109 Paladins - Heavy Metal Artillery Live Fire](https://youtu.be/Khwrjewd0yA?t=89) 
+
+https://www.youtube.com/results?search_query=M109+Paladins
+https://www.bits.de/NRANEU/others/amd-us-archive/FM6-40%2860%29.pdf
+Min range 100-900 meters
+Max range ammunition non assisted 24KM
+
+
+
+Planetery Cannon:
+https://youtu.be/h2dBj3Wp9yM?t=3
