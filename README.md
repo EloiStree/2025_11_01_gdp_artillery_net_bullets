@@ -29,6 +29,7 @@ https://taikai.network/cassinihackathons/hackathons/eu-space-consumer-experience
 My team in the hackathon 
 https://taikai.network/cassinihackathons/hackathons/eu-space-consumer-experience/projects/cmgxk3zm201z01nb99pl1gzcc/idea
 
+----------
 
-**Note of a fun idea:** ArtilleryAgar.IO
-You start small and every time you reach a target you win in power destruction and range but move slower. 
+**Note of a fun idea:** ArtilleryAgar.IO  
+You start small and every time you reach a target you win in power destruction and range but move slower.    
