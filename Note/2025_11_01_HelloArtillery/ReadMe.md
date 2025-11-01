@@ -34,3 +34,16 @@ https://nigelef.tripod.com/fc_ballistics.htm
 
 Planetery Cannon:
 https://youtu.be/h2dBj3Wp9yM?t=3
+
+
+
+M29A1 81-mm mortar’s maximum range is about 4,700–4,740 m (≈5,140–5,180 yd) with the longest-range service projectiles.
+
+https://www.majortweedy.com/gibraltar-guns-900.html
+
+
+Bottom line
+
+For everyday naval guns (5″–127 mm): ~20–40 km with conventional ammo; guided/rocket-assisted shells push that to 50–80+ km.
+
+For large/experimental systems (155 mm AGS with LRLAP, or specially charged battleship guns) advertised or tested ranges can reach well over 100 km in specific configurations, but those are exceptional and often non-standard or cancelled programs.
