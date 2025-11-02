@@ -40,13 +40,15 @@ mesh = SubResource("SphereMesh_d454v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00340962, 0.00321364, 0.00547457)
 script = ExtResource("2_bmmgp")
 simulation_time = 15.68
-charge = 3
-elevation_deg = 5.0
-horizontal_rotation_deg = 50.0
+initial_velocity_meter_per_second = 20
+elevation_degree = 80.0
+horizontal_rotation_degree = 90.0
 muzzle_height = 2.36
 bullet_debug_node = NodePath("Node3DBullets")
 muzzle_debug_node = NodePath("Node3DMuzzle")
+multiplicator = 0.1
 debug_time = 60.0
+use_air_resistance = true
 
 [node name="Node3DBullets" type="Node3D" parent="NodeBullet"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36545, 0.661877, -0.459322)
