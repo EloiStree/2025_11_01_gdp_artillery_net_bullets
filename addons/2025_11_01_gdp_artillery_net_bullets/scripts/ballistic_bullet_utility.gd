@@ -38,15 +38,10 @@ static func ballistic_bullet(
 """
 Yes — air resistance (drag) is very important.
 The 155 mm shells it fires travel long distances (up to 30 km or more), so aerodynamic drag has a major effect on:
-
 Range — it reduces velocity, cutting how far the shell flies.
-
 Trajectory — it alters the shape of the shell’s path.
-
 Time of flight — it increases how long the projectile is in the air.
-
 Accuracy — it amplifies small errors in angle or charge.
-
 That’s why artillery fire control systems always use ballistic tables or computer models that include drag coefficients for different shell types, air density, wind, and temperature.
 """
 
