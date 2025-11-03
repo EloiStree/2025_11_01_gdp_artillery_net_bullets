@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://jd5at4agyn4q"]
+
+[ext_resource type="Script" uid="uid://d3if082glgs76" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/debug_cannon_3d_view.gd" id="1_336hf"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_336hf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uepl4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_402rh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_336hf"]
+
+[node name="Cannon3D" type="Node3D" node_paths=PackedStringArray("node_root_to_move", "node_anchor_cannon_launcher_to_rotate", "node_muzzle_to_move_3d", "node_cannon_scaled_tube_middle_3d")]
+script = ExtResource("1_336hf")
+root_world_position = Vector3(1, 2.11, 2.71)
+root_world_horizontal_rotation_ccw_360 = 73.98
+root_local_elevation_degrees = 23.105
+root_local_muzzle_height = 0.985
+size_multiplicator = 0.15
+node_root_to_move = NodePath(".")
+node_anchor_cannon_launcher_to_rotate = NodePath("CannonMiddlePoint")
+node_muzzle_to_move_3d = NodePath("CannonMuzzulePoint")
+node_cannon_scaled_tube_middle_3d = NodePath("CannonMiddlePoint")
+
+[node name="CannonBase" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0464135, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_336hf")
+metadata/_edit_group_ = true
+
+[node name="CannonMuzzulePoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="CannonBase3" type="MeshInstance3D" parent="CannonMuzzulePoint"]
+transform = Transform3D(0.311431, 0, 0, 0, -3.63015e-09, 0.145334, 0, -0.0830481, -6.35276e-09, 0, 0, 0)
+mesh = SubResource("BoxMesh_uepl4")
+skeleton = NodePath("../..")
+
+[node name="CannonMiddlePoint" type="Node3D" parent="."]
+transform = Transform3D(0.155, 0, 0, 0, 0.155, 0, 0, 0, 2, 0, 0, -1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CannonMiddlePoint"]
+mesh = SubResource("BoxMesh_402rh")
+
+[node name="CannonRotationAnchor" type="Node3D" parent="."]
+
+[node name="Meter1X1" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_336hf")

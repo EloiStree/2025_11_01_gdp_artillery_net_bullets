@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcoa400fwy8ny"]
+[gd_scene load_steps=4 format=3 uid="uid://bcoa400fwy8ny"]
 
 [ext_resource type="Script" uid="uid://qo2k88opd5xx" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/debug_bullet_position.gd.gd" id="2_bmmgp"]
+[ext_resource type="PackedScene" uid="uid://jd5at4agyn4q" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scene/element/cannon_3d.tscn" id="2_u4so0"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_d454v"]
 
@@ -39,19 +40,18 @@ mesh = SubResource("SphereMesh_d454v")
 [node name="NodeBullet" type="Node3D" parent="." node_paths=PackedStringArray("bullet_debug_node", "muzzle_debug_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00340962, 0.00321364, 0.00547457)
 script = ExtResource("2_bmmgp")
-simulation_time = 15.68
 initial_velocity_meter_per_second = 20
 elevation_degree = 80.0
 horizontal_rotation_degree = 90.0
-muzzle_height = 2.36
+muzzle_height = 0.0
 bullet_debug_node = NodePath("Node3DBullets")
 muzzle_debug_node = NodePath("Node3DMuzzle")
 multiplicator = 0.1
-debug_time = 60.0
+debug_time = 5.0
 use_air_resistance = true
 
 [node name="Node3DBullets" type="Node3D" parent="NodeBullet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36545, 0.661877, -0.459322)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00306861, 1.39563, -1.0691)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NodeBullet/Node3DBullets"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -59,7 +59,7 @@ mesh = SubResource("SphereMesh_d454v")
 skeleton = NodePath("../..")
 
 [node name="Node3DMuzzle" type="Node3D" parent="NodeBullet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03918, -1.16227)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00306866, -0.00289228, -0.00492711)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NodeBullet/Node3DMuzzle"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -79,3 +79,9 @@ mesh = SubResource("SphereMesh_d454v")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = SubResource("SphereMesh_d454v")
+
+[node name="Cannon3D" parent="." instance=ExtResource("2_u4so0")]
+root_world_position = Vector3(1000, 500, 500)
+root_world_horizontal_rotation_ccw_360 = 90.0
+root_local_elevation_degrees = 60.0
+size_multiplicator = 0.001

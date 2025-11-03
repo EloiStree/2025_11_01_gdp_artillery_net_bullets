@@ -1,4 +1,3 @@
-@tool
 extends Node3D
 
 # Export variables for easy tweaking in the editor
