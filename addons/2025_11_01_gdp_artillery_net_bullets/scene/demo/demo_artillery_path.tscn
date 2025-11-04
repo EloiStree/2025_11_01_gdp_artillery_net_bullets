@@ -1,11 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcoa400fwy8ny"]
+[gd_scene load_steps=6 format=3 uid="uid://bcoa400fwy8ny"]
 
 [ext_resource type="Script" uid="uid://qo2k88opd5xx" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/debug_bullet_position.gd.gd" id="2_bmmgp"]
-[ext_resource type="PackedScene" uid="uid://jd5at4agyn4q" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scene/element/cannon_3d.tscn" id="2_u4so0"]
+[ext_resource type="PackedScene" uid="uid://bnhmctaxyis83" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scene/element/basic_turret.tscn" id="2_u4so0"]
+[ext_resource type="Script" uid="uid://dlnw5libbjrwt" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/node_basic_turret_from_keyboard.gd" id="3_u4so0"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_d454v"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_u4so0"]
+
 [node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.84394, 0)
+fov = 90.0
+near = 0.001
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.724701, 0.689063, 0, -0.689063, 0.724701, 0, 1.00641, 0.416973)
 
 [node name="NodePath" type="Node3D" parent="."]
 
@@ -66,22 +77,95 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = SubResource("SphereMesh_d454v")
 skeleton = NodePath("../..")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.948959, 0.315401, 0, -0.315401, 0.948959, 0, 2.50954, 4.39561)
+[node name="BasicTurret" parent="." instance=ExtResource("2_u4so0")]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.724701, 0.689063, 0, -0.689063, 0.724701, 0, 1.00641, 0.416973)
+[node name="NodeBasicTurretFromKeyboard" type="Node3D" parent="BasicTurret" node_paths=PackedStringArray("turret_to_affect")]
+script = ExtResource("3_u4so0")
+turret_to_affect = NodePath("..")
+metadata/_custom_type_script = "uid://dlnw5libbjrwt"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-mesh = SubResource("SphereMesh_d454v")
+transform = Transform3D(0.592917, 0, 0, 0, 0.592917, 0, 0, 0, 0.592917, 0, 0, -1.7326)
+mesh = SubResource("BoxMesh_u4so0")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-mesh = SubResource("SphereMesh_d454v")
+[node name="LobbyPlayer40" type="Node3D" parent="."]
 
-[node name="Cannon3D" parent="." instance=ExtResource("2_u4so0")]
-root_world_position = Vector3(1000, 500, 500)
-root_world_horizontal_rotation_ccw_360 = 90.0
-root_local_elevation_degrees = 60.0
-size_multiplicator = 0.001
+[node name="BasicTurret" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret2" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret3" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret4" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret5" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret6" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret7" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret8" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret9" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret10" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret11" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret12" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret13" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret14" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret15" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret16" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret17" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret18" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret19" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret20" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret21" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret22" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret23" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret24" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret25" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret26" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret27" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret28" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret29" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret30" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret31" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret32" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret33" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret34" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret35" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret36" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret37" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret38" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret39" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="BasicTurret40" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]

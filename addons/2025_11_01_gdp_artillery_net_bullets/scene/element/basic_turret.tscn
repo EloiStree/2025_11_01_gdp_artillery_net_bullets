@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnhmctaxyis83"]
+
+[ext_resource type="Script" uid="uid://c0syqqw7p006s" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/node_basic_turret.gd" id="1_bwc7m"]
+[ext_resource type="Script" uid="uid://bkmhla4fl08q7" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/debug_line/debug_ballistic_line_3D.gd" id="3_bwc7m"]
+[ext_resource type="PackedScene" uid="uid://jd5at4agyn4q" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scene/element/cannon_3d_greybox_view.tscn" id="3_c4gbo"]
+[ext_resource type="Script" uid="uid://cvtldp3c0xr8w" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/debug_line/bode_basic_turret_curve_evaluation.gd" id="4_kyclw"]
+[ext_resource type="Script" uid="uid://cckvayvklte5t" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/unstore/single_ballistic_bullet.gd" id="5_c4gbo"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_c4gbo"]
+
+[node name="BasicTurret" type="Node3D" node_paths=PackedStringArray("player_node")]
+script = ExtResource("1_bwc7m")
+player_node = NodePath(".")
+bullet_initial_velocity_meter_per_second = 12.0
+turret_horizontal_rotation_in_degree = 0.0
+rotation_horizon_speed_degree_per_second = 180.0
+rotation_elevation_speed_degree_per_second = 90.0
+random_respawn_position = 10.0
+metadata/_custom_type_script = "uid://c0syqqw7p006s"
+
+[node name="CannonView3D" parent="." instance=ExtResource("3_c4gbo")]
+size_multiplicator = 0.1
+
+[node name="DebugBallisticLine3D" type="Node3D" parent="."]
+script = ExtResource("3_bwc7m")
+points = Array[Vector3]([Vector3(5, 5, 5), Vector3(6, 6, 6)])
+metadata/_custom_type_script = "uid://bkmhla4fl08q7"
+
+[node name="NodeBasicTurretCurveEvaluation" type="Node" parent="." node_paths=PackedStringArray("turret_to_observe")]
+script = ExtResource("4_kyclw")
+turret_to_observe = NodePath("..")
+
+[node name="SingleBallisticBullet" type="Node" parent="." node_paths=PackedStringArray("bullet_to_move_as_node")]
+script = ExtResource("5_c4gbo")
+bullet_to_move_as_node = NodePath("../BulletsView")
+max_time_seconds = 10.0
+multiplicator = 0.1
+use_air_resistance = true
+metadata/_custom_type_script = "uid://cckvayvklte5t"
+
+[node name="BulletsView" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BulletsView"]
+mesh = SubResource("SphereMesh_c4gbo")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="on_fire_bullet_requested" from="." to="SingleBallisticBullet" method="fire_bullet_basic_anonymous"]
+[connection signal="on_turret_position_changed" from="." to="CannonView3D" method="set_cannon_position"]
+[connection signal="on_turret_rotation_changed" from="." to="CannonView3D" method="set_cannon_rotation"]
+[connection signal="on_ballistic_curve_evaluated" from="NodeBasicTurretCurveEvaluation" to="DebugBallisticLine3D" method="set_points"]
+[connection signal="timeout" from="Timer" to="." method="request_turret_new_random_position"]

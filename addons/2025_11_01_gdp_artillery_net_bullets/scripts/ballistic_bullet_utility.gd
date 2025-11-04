@@ -29,7 +29,7 @@ static func ballistic_bullet(
 	var y = v0y * relative_time_in_air_seconds - 0.5 * gravity_acceleration * t_squared
 	
 	var local_position = Vector3(x, y, 0.0)
-	var rotated_position = local_position.rotated(Vector3.UP, deg_to_rad(world_horizontal_rotation_degrees_forward_ccw_360))
+	var rotated_position = local_position.rotated(Vector3.UP, deg_to_rad(world_horizontal_rotation_degrees_forward_ccw_360+90))
 	
 	return initial_position + rotated_position
 
@@ -107,6 +107,35 @@ static func ballistic_bullet_with_air_resistance(
 		t += dt
 	
 	var local_position = Vector3(x, y, 0.0)
-	var rotated_position = local_position.rotated(Vector3.UP, deg_to_rad(world_horizontal_rotation_degrees_forward_ccw_360))
+	var rotated_position = local_position.rotated(Vector3.UP, deg_to_rad(world_horizontal_rotation_degrees_forward_ccw_360+90))
 	
 	return initial_position + rotated_position
+
+
+
+func compute_ballistic_curve_points(
+		initial_position: Vector3,
+		world_horizontal_rotation_degrees_forward_ccw_360: float,
+		elevation_angle_degree: float,
+		initial_velocity_meter_per_second: float,
+		time_step_seconds: float = 1.0,
+		max_time_seconds: float = 30.0
+	) -> Array:
+	"""
+	Computes a series of points representing the ballistic trajectory of a bullet.
+	"""
+	var points: Array = []
+	var t: float = 0.0
+	
+	while t <= max_time_seconds:
+		var point: Vector3 = ballistic_bullet(
+			t,
+			initial_velocity_meter_per_second,
+			elevation_angle_degree,
+			world_horizontal_rotation_degrees_forward_ccw_360,
+			initial_position
+		)
+		points.append(point)
+		t += time_step_seconds
+	
+	return points
