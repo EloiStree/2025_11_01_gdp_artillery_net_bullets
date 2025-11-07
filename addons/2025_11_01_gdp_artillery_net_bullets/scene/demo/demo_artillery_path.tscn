@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcoa400fwy8ny"]
+[gd_scene load_steps=7 format=3 uid="uid://bcoa400fwy8ny"]
 
 [ext_resource type="Script" uid="uid://qo2k88opd5xx" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/debug_bullet_position.gd.gd" id="2_bmmgp"]
 [ext_resource type="PackedScene" uid="uid://bnhmctaxyis83" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scene/element/basic_turret.tscn" id="2_u4so0"]
 [ext_resource type="Script" uid="uid://dlnw5libbjrwt" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/node_basic_turret_from_keyboard.gd" id="3_u4so0"]
+[ext_resource type="Script" uid="uid://bk53sbllfu8gv" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/static/ballistic_bullet_singleton_event.gd" id="5_xk2vf"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_d454v"]
 
@@ -77,11 +78,26 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = SubResource("SphereMesh_d454v")
 skeleton = NodePath("../..")
 
-[node name="BasicTurret" parent="." instance=ExtResource("2_u4so0")]
+[node name="BasicTurretPlayerOne" parent="." instance=ExtResource("2_u4so0")]
 
-[node name="NodeBasicTurretFromKeyboard" type="Node3D" parent="BasicTurret" node_paths=PackedStringArray("turret_to_affect")]
+[node name="NodeBasicTurretFromKeyboard" type="Node3D" parent="BasicTurretPlayerOne" node_paths=PackedStringArray("turret_to_affect")]
 script = ExtResource("3_u4so0")
 turret_to_affect = NodePath("..")
+metadata/_custom_type_script = "uid://dlnw5libbjrwt"
+
+[node name="BasicTurretPlayerTwo" parent="." instance=ExtResource("2_u4so0")]
+
+[node name="NodeBasicTurretFromKeyboard" type="Node3D" parent="BasicTurretPlayerTwo" node_paths=PackedStringArray("turret_to_affect")]
+script = ExtResource("3_u4so0")
+turret_to_affect = NodePath("..")
+input_get_new_position = "U"
+input_rotation_left = "J"
+input_rotation_right = "L"
+input_rotation_up = "I"
+input_rotation_down = "K"
+input_fire_bullet = "O"
+input_increase_velocity = "Y"
+input_decrease_velocity = "H"
 metadata/_custom_type_script = "uid://dlnw5libbjrwt"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -169,3 +185,12 @@ mesh = SubResource("BoxMesh_u4so0")
 [node name="BasicTurret39" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
 
 [node name="BasicTurret40" parent="LobbyPlayer40" instance=ExtResource("2_u4so0")]
+
+[node name="NodeListenBallistic" type="Node" parent="."]
+
+[node name="BallisticBulletSingletonEvent" type="Node" parent="NodeListenBallistic"]
+script = ExtResource("5_xk2vf")
+metadata/_custom_type_script = "uid://bk53sbllfu8gv"
+
+[connection signal="on_bullet_destroyed" from="NodeListenBallistic/BallisticBulletSingletonEvent" to="NodeListenBallistic/BallisticBulletSingletonEvent" method="print_bullet_destroyed"]
+[connection signal="on_bullet_fired" from="NodeListenBallistic/BallisticBulletSingletonEvent" to="NodeListenBallistic/BallisticBulletSingletonEvent" method="print_bullet_fired"]

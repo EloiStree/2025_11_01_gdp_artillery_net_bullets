@@ -1,6 +1,11 @@
+
+
 class_name SingleBallisticBullet extends Node
 # This class allows to manage a pool of one single bullet.
 # When trigger id destroy the bullet reserved to trigger a new one.
+
+
+
 
 signal on_bullet_fired(fired_start_point : BallisticStructs.STRUCT_BallisticStartPoint)
 signal on_bullet_destroyed(fired_start_point : BallisticStructs.STRUCT_BallisticStartPoint, destroyed_end_point : BallisticStructs.STRUCT_BallisticsEndPoint)
@@ -53,7 +58,7 @@ func fire_bullet_basic_anonymous(
 	start_point.gun_elevation_degree = gun_elevation_degree
 	start_point.world_horizontal_rotation_deg_forward_ccw_360 = world_horizontal_rotation_deg_forward_ccw_360
 	start_point.start_muzzle_velocity_meter_per_seconds = start_muzzle_velocity_meter_per_seconds
-	print("Firing bullet with start point:", start_point)
+	#print("Firing bullet with start point:", start_point)
 	fire_bullet(start_point)
 	
 func fire_bullet(start_point: BallisticStructs.STRUCT_BallisticStartPoint) -> void:
@@ -134,7 +139,7 @@ func destroy_bullet() -> void:
 
 	emit_signal("on_bullet_destroyed", bullet_current_point.start_point, end_point)
 	emit_signal("on_request_to_hide_bullet")
-	print("Bullet destroyed with end point:", end_point)
+	#print("Bullet destroyed with end point:", end_point)
 
 func reset_to_wait_next_fire() -> void:
 	_elapsed_time = 0.0
