@@ -10,9 +10,11 @@ git submodule update --init --recursive
 
 --------
 
+
 # Artillery Net Bullets 
 
-Multiplayer artillery game using curved projectile start/end coordinates.
+Multiplayer artillery game using curved projectile start/end coordinates.  
+Wiki: https://en.wikipedia.org/wiki/Artillery_game  
 
 A cross over between https://nuclearsecrecy.com/nukemap and [Artillery](https://www.youtube.com/watch?v=H3gqZ5iC4yI) 
 
