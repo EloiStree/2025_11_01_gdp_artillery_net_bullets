@@ -13,6 +13,10 @@ extends Node3D
 @export var node_muzzle_to_move_3d: Node3D
 @export var node_cannon_scaled_tube_middle_3d: Node3D
 
+signal on_set_global_color(given_color:Color)
+
+func set_global_color(given_color:Color):
+	on_set_global_color.emit(given_color)
 
 
 func _process(delta: float) -> void:
