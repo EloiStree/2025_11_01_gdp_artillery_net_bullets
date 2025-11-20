@@ -1,4 +1,8 @@
-Artillery Net Bullets 
+<img width="1138" height="633" alt="image" src="https://github.com/user-attachments/assets/d9a9b487-428b-46f3-8bbd-aeb4101b9657" />
+
+---------------------
+
+# Artillery Net Bullets 
 
 Multiplayer artillery game using curved projectile start/end coordinates.
 
