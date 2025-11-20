@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://jd5at4agyn4q"]
+[gd_scene load_steps=6 format=3 uid="uid://jd5at4agyn4q"]
 
 [ext_resource type="Script" uid="uid://d3if082glgs76" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/debug_cannon_3d_view.gd" id="1_336hf"]
-[ext_resource type="Script" uid="uid://bhc5t1kfy2md2" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/unstore/set_mesh_instance_3d_color.gd" id="2_hrymv"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_hrymv"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_336hf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_uepl4"]
 
@@ -24,8 +23,8 @@ node_muzzle_to_move_3d = NodePath("CannonMuzzulePoint")
 node_cannon_scaled_tube_middle_3d = NodePath("CannonMiddlePoint")
 
 [node name="CannonBase" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.7, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("SphereMesh_hrymv")
+transform = Transform3D(1, 0, 0, 0, 0.0464135, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_336hf")
 metadata/_edit_group_ = true
 
 [node name="CannonMuzzulePoint" type="Node3D" parent="."]
@@ -47,7 +46,3 @@ mesh = SubResource("BoxMesh_402rh")
 [node name="Meter1X1" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("BoxMesh_336hf")
-
-[node name="SetColor" type="Node" parent="." node_paths=PackedStringArray("mesh_instance_to_affect")]
-script = ExtResource("2_hrymv")
-mesh_instance_to_affect = [NodePath("../CannonBase")]

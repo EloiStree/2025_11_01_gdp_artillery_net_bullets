@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcoa400fwy8ny"]
+[gd_scene load_steps=7 format=3 uid="uid://bcoa400fwy8ny"]
 
+[ext_resource type="Script" uid="uid://qo2k88opd5xx" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/debug_bullet_position.gd.gd" id="2_bmmgp"]
 [ext_resource type="PackedScene" uid="uid://bnhmctaxyis83" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scene/element/basic_turret.tscn" id="2_u4so0"]
 [ext_resource type="Script" uid="uid://dlnw5libbjrwt" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/node_basic_turret_from_keyboard.gd" id="3_u4so0"]
 [ext_resource type="Script" uid="uid://bk53sbllfu8gv" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/static/ballistic_bullet_singleton_event.gd" id="5_xk2vf"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_d454v"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_u4so0"]
 
@@ -15,6 +18,65 @@ near = 0.001
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.724701, 0.689063, 0, -0.689063, 0.724701, 0, 1.00641, 0.416973)
+
+[node name="NodePath" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NodePath"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="NodePath"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="NodePath"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="NodePath"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="NodePath"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="NodePath"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="NodePath"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+
+[node name="NodeBullet" type="Node3D" parent="." node_paths=PackedStringArray("bullet_debug_node", "muzzle_debug_node")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00340962, 0.00321364, 0.00547457)
+script = ExtResource("2_bmmgp")
+initial_velocity_meter_per_second = 20
+elevation_degree = 80.0
+horizontal_rotation_degree = 90.0
+muzzle_height = 0.0
+bullet_debug_node = NodePath("Node3DBullets")
+muzzle_debug_node = NodePath("Node3DMuzzle")
+multiplicator = 0.1
+debug_time = 5.0
+use_air_resistance = true
+
+[node name="Node3DBullets" type="Node3D" parent="NodeBullet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00306861, 1.39563, -1.0691)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NodeBullet/Node3DBullets"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+skeleton = NodePath("../..")
+
+[node name="Node3DMuzzle" type="Node3D" parent="NodeBullet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00306866, -0.00289228, -0.00492711)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NodeBullet/Node3DMuzzle"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_d454v")
+skeleton = NodePath("../..")
 
 [node name="BasicTurretPlayerOne" parent="." instance=ExtResource("2_u4so0")]
 

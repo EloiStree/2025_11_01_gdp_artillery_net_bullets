@@ -14,11 +14,6 @@ extends Node3D
 @export var node_cannon_scaled_tube_middle_3d: Node3D
 
 
-signal on_set_color(given_color:Color)
-
-func set_general_color(given_color:Color):
-	on_set_color.emit(given_color)
-		
 
 func _process(delta: float) -> void:
 	if not is_inside_tree():
