@@ -2,6 +2,14 @@
 
 ---------------------
 
+```
+git submodule add https://github.com/EloiStree/2025_11_01_gdp_artillery_net_bullets.git addons/2025_11_01_gdp_artillery_net_bullets
+git submodule update --init --recursive
+
+```
+
+--------
+
 # Artillery Net Bullets 
 
 Multiplayer artillery game using curved projectile start/end coordinates.
