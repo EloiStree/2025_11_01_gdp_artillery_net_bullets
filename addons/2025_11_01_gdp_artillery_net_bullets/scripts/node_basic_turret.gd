@@ -53,6 +53,13 @@ func _process(delta: float) -> void:
 	if bool_is_rotating_left or bool_is_rotating_right or bool_is_rotating_up or bool_is_rotating_down:
 		emit_signal("on_turret_rotation_changed", turret_horizontal_rotation_in_degree, turret_elevation_rotation_in_degree)
 
+signal on_set_current_turret_global_color(color:Color)
+
+func set_turret_global_color(color:Color):
+	on_set_current_turret_global_color.emit(color)
+	
+	
+
 
 func request_turret_new_random_position() -> void:
 	var random_offset = Vector3(

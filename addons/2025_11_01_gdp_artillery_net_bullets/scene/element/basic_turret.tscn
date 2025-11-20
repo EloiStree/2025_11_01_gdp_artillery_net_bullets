@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnhmctaxyis83"]
+[gd_scene load_steps=9 format=3 uid="uid://bnhmctaxyis83"]
 
 [ext_resource type="Script" uid="uid://c0syqqw7p006s" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/node_basic_turret.gd" id="1_bwc7m"]
 [ext_resource type="Script" uid="uid://bkmhla4fl08q7" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/debug_line/debug_ballistic_line_3D.gd" id="3_bwc7m"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cvtldp3c0xr8w" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/debug_line/bode_basic_turret_curve_evaluation.gd" id="4_kyclw"]
 [ext_resource type="Script" uid="uid://cckvayvklte5t" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/unstore/single_ballistic_bullet.gd" id="5_c4gbo"]
 [ext_resource type="Script" uid="uid://c26flx4gwf457" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/static/ballistic_bullet_singleton_pusher.gd" id="6_e887n"]
+[ext_resource type="Script" uid="uid://bhc5t1kfy2md2" path="res://addons/2025_11_01_gdp_artillery_net_bullets/scripts/unstore/set_mesh_instance_3d_color.gd" id="7_jkd5u"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_c4gbo"]
 
@@ -51,7 +52,14 @@ autostart = true
 [node name="PushBulletNotification" type="Node" parent="."]
 script = ExtResource("6_e887n")
 
+[node name="SetGlobalColorRelay" type="Node" parent="." node_paths=PackedStringArray("mesh_instance_to_affect")]
+script = ExtResource("7_jkd5u")
+mesh_instance_to_affect = [null]
+use_random_color_at_ready = false
+
 [connection signal="on_fire_bullet_requested" from="." to="SingleBallisticBullet" method="fire_bullet_basic_anonymous"]
+[connection signal="on_set_current_turret_global_color" from="." to="CannonView3D" method="set_general_color"]
+[connection signal="on_set_current_turret_global_color" from="." to="SetGlobalColorRelay" method="set_color"]
 [connection signal="on_turret_position_changed" from="." to="CannonView3D" method="set_cannon_position"]
 [connection signal="on_turret_rotation_changed" from="." to="CannonView3D" method="set_cannon_rotation"]
 [connection signal="on_ballistic_curve_evaluated" from="NodeBasicTurretCurveEvaluation" to="DebugBallisticLine3D" method="set_points"]
