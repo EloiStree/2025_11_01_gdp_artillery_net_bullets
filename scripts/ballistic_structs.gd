@@ -57,18 +57,18 @@ class STRUCT_BallisticStartPoint extends Resource:
 	var start_muzzle_velocity_meter_per_seconds: float = 0.0 # initial speed of the bullet at the muzzle
 
 
-	func to_string() -> String:
-		return "BallisticStartPoint(player_claim_id=%d, player_lobby_index_id=%d, pool_index_id=%d, bullet_in_pool_index_id=%d, start_muzzle_position=%s, start_ntp_utc_timestamp_date_ms=%d, gun_elevation_degree=%.2f, world_horizontal_rotation_deg_forward_ccw_360=%.2f, start_muzzle_velocity_meter_per_seconds=%.2f)" % [
-			player_claim_id,
-			player_lobby_index_id,
-			pool_index_id,
-			bullet_in_pool_index_id,
-			start_muzzle_position,
-			start_ntp_utc_timestamp_date_ms,
-			gun_elevation_degree,
-			world_horizontal_rotation_deg_forward_ccw_360,
-			start_muzzle_velocity_meter_per_seconds
-		]
+	#func to_string() -> String:
+		#return "BallisticStartPoint(player_claim_id=%d, player_lobby_index_id=%d, pool_index_id=%d, bullet_in_pool_index_id=%d, start_muzzle_position=%s, start_ntp_utc_timestamp_date_ms=%d, gun_elevation_degree=%.2f, world_horizontal_rotation_deg_forward_ccw_360=%.2f, start_muzzle_velocity_meter_per_seconds=%.2f)" % [
+			#player_claim_id,
+			#player_lobby_index_id,
+			#pool_index_id,
+			#bullet_in_pool_index_id,
+			#start_muzzle_position,
+			#start_ntp_utc_timestamp_date_ms,
+			#gun_elevation_degree,
+			#world_horizontal_rotation_deg_forward_ccw_360,
+			#start_muzzle_velocity_meter_per_seconds
+		#]
 		
 
 class STRUCT_BallisticsEndPoint extends Resource:
@@ -77,14 +77,14 @@ class STRUCT_BallisticsEndPoint extends Resource:
 	var bullet_in_pool_index_id: int = -1
 	var end_world_position: Vector3 = Vector3.ZERO
 	var end_ntp_utc_timestamp_date_ms: int = 0
-
-	func to_string() -> String:
-		return "BallisticsEndPoint(pool_index_id=%d, bullet_in_pool_index_id=%d, end_world_position=%s, end_ntp_utc_timestamp_date_ms=%d)" % [
-			pool_index_id,
-			bullet_in_pool_index_id,
-			end_world_position,
-			end_ntp_utc_timestamp_date_ms
-		]
+	
+#func to_string() -> String:
+	#return "BallisticsEndPoint(pool_index_id=%d, bullet_in_pool_index_id=%d, end_world_position=%s, end_ntp_utc_timestamp_date_ms=%d)" % [
+		#pool_index_id,
+		#bullet_in_pool_index_id,
+		#end_world_position,
+		#end_ntp_utc_timestamp_date_ms
+	#]
 
    
 class STRUCT_WorldPositionToGPS extends Resource:

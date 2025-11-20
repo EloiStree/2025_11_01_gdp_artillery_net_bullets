@@ -76,6 +76,7 @@ func fire_bullet(start_point: BallisticStructs.STRUCT_BallisticStartPoint) -> vo
 	emit_signal("on_request_to_show_bullet")
 	update_bullet_size()
 	update_position()
+	
 
 func _process(delta: float) -> void:
 	if not _had_been_fired_yet_not_destroyed:
