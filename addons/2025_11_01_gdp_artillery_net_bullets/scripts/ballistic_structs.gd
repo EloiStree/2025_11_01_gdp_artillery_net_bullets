@@ -28,21 +28,21 @@ static func copy_end_point(from: STRUCT_BallisticsEndPoint, to: STRUCT_Ballistic
 		
 
 
-const GRAVITY = 9.81  # m/s² (downward)
+const GRAVITY_CM_PER_SQUARE_SECOND = 981.0  # cm/s² (downward)
 
 # common M109 charges
-const MUZZLE_VELOCITIES_METER_PER_SQUARE_SECOND = {	
-	3: 280.0,
-	4: 350.0,
-	5: 430.0,
-	6: 530.0,
-	7: 650.0,
-	8: 827.0  
+const MUZZLE_VELOCITIES_CM_PER_SQUARE_SECOND = {	
+	3: 28000.0,
+	4: 35000.0,
+	5: 43000.0,
+	6: 53000.0,
+	7: 65000.0,
+	8: 82700.0  
 }
 
 class STRUCT_BulletCurrentPoint extends Resource:
-	var start_point: STRUCT_BallisticStartPoint
-	var bullet_current_point: Vector3
+	var start_point_cm: STRUCT_BallisticStartPoint
+	var bullet_current_point_cm_i32cm: Vector3i
 
 class STRUCT_BallisticStartPoint extends Resource:
 	# Diffused event at spawn bullet
@@ -50,65 +50,65 @@ class STRUCT_BallisticStartPoint extends Resource:
 	var player_lobby_index_id: int = -1 # Unique player lobby index id who fired the bullet
 	var pool_index_id: int = -1 # Game can have several type of ballistic bullets pools
 	var bullet_in_pool_index_id: int = -1 # Each pool can have several bullets
-	var start_muzzle_position: Vector3 = Vector3.ZERO # World position of the muzzle at start
 	var start_ntp_utc_timestamp_date_ms: int = 0 # You need precision time sync and logs to use the bullets
-	var gun_elevation_degree: float = 0.0 # vertical elevation of the gun at firing time  
-	var world_horizontal_rotation_deg_forward_ccw_360: float = 0.0 # horizontal rotation of the gun in the game world value not relative to the carrier
-	var start_muzzle_velocity_meter_per_seconds: float = 0.0 # initial speed of the bullet at the muzzle
-
-
-	func to_string() -> String:
-		return "BallisticStartPoint(player_claim_id=%d, player_lobby_index_id=%d, pool_index_id=%d, bullet_in_pool_index_id=%d, start_muzzle_position=%s, start_ntp_utc_timestamp_date_ms=%d, gun_elevation_degree=%.2f, world_horizontal_rotation_deg_forward_ccw_360=%.2f, start_muzzle_velocity_meter_per_seconds=%.2f)" % [
-			player_claim_id,
-			player_lobby_index_id,
-			pool_index_id,
-			bullet_in_pool_index_id,
-			start_muzzle_position,
-			start_ntp_utc_timestamp_date_ms,
-			gun_elevation_degree,
-			world_horizontal_rotation_deg_forward_ccw_360,
-			start_muzzle_velocity_meter_per_seconds
-		]
+	var start_muzzle_position_i32cm: Vector3i = Vector3.ZERO # World position of the muzzle at start
+	var gun_elevation_degree_i32deg: int = 0 # vertical elevation of the gun at firing time
+	var world_horizontal_rotation_deg_forward_ccw_360_i32deg: int = 0 # horizontal rotation of the gun in the game world value not relative to the carrier
+	var start_muzzle_velocity_cm_per_seconds_i32cm: int = 0 # initial speed of the bullet at the muzzle
 		
 
 class STRUCT_BallisticsEndPoint extends Resource:
 	# Diffused event at unspawn bullet for any reason (collision, max range, server cleanup, etc)
 	var pool_index_id: int = -1
 	var bullet_in_pool_index_id: int = -1
-	var end_world_position: Vector3 = Vector3.ZERO
+	var end_world_position_i32cm: Vector3i = Vector3i.ZERO
 	var end_ntp_utc_timestamp_date_ms: int = 0
-
-	func to_string() -> String:
-		return "BallisticsEndPoint(pool_index_id=%d, bullet_in_pool_index_id=%d, end_world_position=%s, end_ntp_utc_timestamp_date_ms=%d)" % [
-			pool_index_id,
-			bullet_in_pool_index_id,
-			end_world_position,
-			end_ntp_utc_timestamp_date_ms
-		]
 
    
 class STRUCT_WorldPositionToGPS extends Resource:
 	# This class give information on Godot World compare to GPS coordinates
-	var world_position: Vector3 = Vector3.ZERO
-	var latitude_deg: float = 0.0
-	var longitude_deg: float = 0.0
-	var altitude_meters: float = 0.0
+	var world_position_i32cm: Vector3i = Vector3.ZERO
+	var latitude_i360deg: float = 0.0
+	var longitude_i360deg: float = 0.0
+	var altitude_i32cm: float = 0.0
 
 class STRUCT_BallisticStartEventGPS extends Resource:
 	# Give additional GPS information at the start of the bullet
 	var pool_index_id: int = -1
 	var bullet_in_pool_index_id: int = -1
-	var world_position: Vector3 = Vector3.ZERO
-	var latitude_deg: float = 0.0
-	var longitude_deg: float = 0.0
-	var altitude_meters: float = 0.0
+	var world_position_i32cm: Vector3i = Vector3.ZERO
+	var latitude_i360deg: float = 0.0
+	var longitude_i360deg: float = 0.0
+	var altitude_i32cm: float = 0.0
 
 class STRUCT_BallisticEndEventGPS extends Resource:
 	# Give additional GPS information at the end of the bullet
 	# Diffused event at collision or max range on game server side
 	var pool_index_id: int = -1
 	var bullet_in_pool_index_id: int = -1
-	var world_position: Vector3 = Vector3.ZERO
-	var latitude_deg: float = 0.0
-	var longitude_deg: float = 0.0
-	var altitude_meters: float = 0.0
+	var world_position_i32cm: Vector3i = Vector3i.ZERO
+	var latitude_i360deg: int = 0.0
+	var longitude_i360deg: int = 0.0
+	var altitude_i32cm: int = 0.0
+
+
+
+class STRUCT_IntCmPrecision:
+	# I need an artillery dos game playble on a planet earth scale
+	# So I need to store position in cm precision with int32
+	# Max integer value for cm precision is 21,474,836.47 meter (21,474 km)
+	var value_i32cm: int = 0
+
+	
+	const MAX_VALUE_I32CM = 2147483647  # Max positive value for int32
+	const MIN_VALUE_I32CM = -2147483648 # Min negative value for int32
+	const MAX_VALUE_IN_KM = 21474.83647  # Convert cm to km
+	const MIN_VALUE_IN_KM = -21474.83648  # Convert cm to km
+	const MAX_VALUE_IN_METER = 21474836.47  # Convert cm to meter
+	const MIN_VALUE_IN_METER = -21474836.48  # Convert cm to meter
+
+class STRUCT_IntMaxDegreePrecision360:
+	## I want to make artillery game on a planet scale so 42000 km circumference max.
+	## it means that I need precise degree instead of the classic 180.00
+	## Max integer value for degree with 0.000001 precision and 360 degrees is 360,000,000 
+	var value_i32_360_000000: int = 0
